@@ -6,7 +6,7 @@ public class MoodAnalyser {
     private String message;
 
     //default constructor
-    public MoodAnalyser(){
+    public MoodAnalyser() {
 
     }
 
@@ -15,13 +15,15 @@ public class MoodAnalyser {
         this.message = message;
     }
 
-    public String analyseMood () {
-        if (message.contains("Sad")) {
-            return "SAD";
-        } else {
+    public String analyseMood() {
+        try {
+            if (message.contains("Sad")) {
+                return "SAD";
+            } else {
+                return "HAPPY";
+            }
+        } catch (NullPointerException e) {
             return "HAPPY";
         }
-
     }
-
 }

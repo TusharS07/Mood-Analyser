@@ -41,4 +41,16 @@ public class MoodAnalyserTest {
     }
 
 
+    //UC = Handle Exception if User Provides Invalid Mood - Like NULL
+    //TC-2.1 = Given Null Mood Should Return Happy
+
+    @Test
+    public void giveNUllMoodItShouldReturnHappy() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+        String mood = moodAnalyser.analyseMood();
+        Assert.assertEquals("HAPPY",mood);
+    }
+
+
+
 }
