@@ -59,7 +59,7 @@ public class MoodAnalyserTest {
 
     */
 
-    //TC 3.1 = Given NULL Mood Should Throw MoodAnalysisException
+    /*//TC 3.1 = Given NULL Mood Should Throw MoodAnalysisException
     @Test
     public void giveNullMoodShouldThrowException() {
         MoodAnalyser moodAnalyser = new MoodAnalyser(null);
@@ -67,6 +67,30 @@ public class MoodAnalyserTest {
             moodAnalyser.analyseMood(null);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals("Please enter valid Message...",e.getMessage());
+        }
+    }
+
+     */
+
+    //TC3.2 = Given Empty Mood Should Throw MoodAnalysisException indicating Empty Mood
+    @Test
+    public void giveNullMoodShouldThrowExceptionIndicatingNullMood() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+        try {
+            moodAnalyser.analyseMood(null);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTER_NULL,e.type);
+        }
+    }
+
+
+    @Test
+    public void giveNullMoodShouldThrowExceptionIndicatingEmptyMood() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser(" ");
+        try {
+            moodAnalyser.analyseMood(" ");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTER_EMPTY,e.type);
         }
     }
 
