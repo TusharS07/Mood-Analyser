@@ -1,7 +1,8 @@
 package com.bridgelabz.moodAnalyzerProblem;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 
 public class MoodAnalyserTest {
     /*//TC1.1=Given “I am in Sad Mood” message Should Return SAD
@@ -22,7 +23,7 @@ public class MoodAnalyserTest {
 
 
     //Repeat TC 1.1 = Given “I am in Sad Mood” message in Constructor Should Return SAD
-    @Test
+   /* @Test
     public void checkWhenMessageSADThenShouldReturnSAD() {
         MoodAnalyser moodAnalyser = new MoodAnalyser("I am in Sad Mood");
         String mood = moodAnalyser.analyseMood();
@@ -47,9 +48,52 @@ public class MoodAnalyserTest {
     @Test
     public void giveNUllMoodItShouldReturnHappy() {
         MoodAnalyser moodAnalyser = new MoodAnalyser(null);
-        String mood = moodAnalyser.analyseMood();
+        String mood = null;
+        try {
+            mood = moodAnalyser.analyseMood();
+        } catch (MoodAnalysisException e) {
+            throw new RuntimeException(e);
+        }
         Assert.assertEquals("HAPPY",mood);
     }
+
+    */
+
+    /*//TC 3.1 = Given NULL Mood Should Throw MoodAnalysisException
+    @Test
+    public void giveNullMoodShouldThrowException() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+        try {
+            moodAnalyser.analyseMood(null);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals("Please enter valid Message...",e.getMessage());
+        }
+    }
+
+     */
+
+    //TC3.2 = Given Empty Mood Should Throw MoodAnalysisException indicating Empty Mood
+    @Test
+    public void giveNullMoodShouldThrowExceptionIndicatingNullMood() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+        try {
+            moodAnalyser.analyseMood(null);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTER_NULL,e.type);
+        }
+    }
+
+
+    @Test
+    public void giveNullMoodShouldThrowExceptionIndicatingEmptyMood() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser(" ");
+        try {
+            moodAnalyser.analyseMood(" ");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTER_EMPTY,e.type);
+        }
+    }
+
 
 
 
